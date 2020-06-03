@@ -1,6 +1,6 @@
 -- MySQL dump 10.17  Distrib 10.3.23-MariaDB, for Win64 (AMD64)
 --
--- Host: 192.241.144.140    Database: Spotify
+-- Host: 192.241.144.140    Database: spotifydb
 -- ------------------------------------------------------
 -- Server version	10.4.13-MariaDB-1:10.4.13+maria~bionic
 
@@ -16,35 +16,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `Album`
---
-
-DROP TABLE IF EXISTS `Album`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Album` (
-  `id_album` int(11) NOT NULL AUTO_INCREMENT,
-  `titulo_album` varchar(45) NOT NULL,
-  `anio` date DEFAULT NULL,
-  `genero` varchar(30) DEFAULT NULL,
-  `interprete` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_album`),
-  KEY `interprete` (`interprete`),
-  CONSTRAINT `Album_ibfk_1` FOREIGN KEY (`interprete`) REFERENCES `Artista` (`id_artista`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `Album`
---
-
-LOCK TABLES `Album` WRITE;
-/*!40000 ALTER TABLE `Album` DISABLE KEYS */;
-INSERT INTO `Album` VALUES (1,'The Eminem Show','2019-08-30','Hip Hop',1),(2,'Revival','2021-02-05','Pop',2),(3,'Visionary','2020-10-03','Reggaeton',3),(4,'Sweetener','2020-02-05','Pop',4),(5,'Purpose','2019-09-23','Pop',5),(6,'Arde el cielo','2019-09-16','Rock',6),(7,'I Wanna Thank Me','2021-04-06','Hip Hop',7),(8,'YHLQMDLG','2020-12-07','Pop',8),(9,'Damn','2019-08-04','Soul',9),(10,'When It\'s Dark Out','2021-03-01','Hip Hop',10);
-/*!40000 ALTER TABLE `Album` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `Artista`
 --
 
@@ -52,11 +23,15 @@ DROP TABLE IF EXISTS `Artista`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Artista` (
-  `id_artista` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre_artista` varchar(45) DEFAULT NULL,
-  `oyentes_mensuales` float DEFAULT NULL,
-  PRIMARY KEY (`id_artista`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+  `Id_Artista` int(11) NOT NULL AUTO_INCREMENT,
+  `Nombre_Artista` varchar(50) NOT NULL,
+  `Apellido_Artista` varchar(50) NOT NULL,
+  `Nombre_Artististico` varchar(50) NOT NULL,
+  `fecha_Nacimiento_Artista` date NOT NULL,
+  `Nacionalidad` varchar(50) NOT NULL,
+  `Numero_Seguidores` int(11) DEFAULT NULL,
+  PRIMARY KEY (`Id_Artista`)
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -65,186 +40,378 @@ CREATE TABLE `Artista` (
 
 LOCK TABLES `Artista` WRITE;
 /*!40000 ALTER TABLE `Artista` DISABLE KEYS */;
-INSERT INTO `Artista` VALUES (1,'Daddy Yankee',345451000),(2,'Manuel Turizo',36978500),(3,'Farruko',61526100),(4,'Arcangel',77606600),(5,'Alejandro Sanz',23988100),(6,'Mana',28493000),(7,'Enrique Iglesias',30759300),(8,'Bad Bunny',113324000),(9,'Avicii',223542000),(10,'Tyga',49983900);
+INSERT INTO `Artista` VALUES (1,'Lillian','Dean','Selma Conrad','2000-01-20','Spain',25391),(2,'Aileen','Joseph','Alexa Wells','2014-02-02','Senegal',470078),(3,'Xavier','Craig','Lunea Valencia','2002-05-05','Syria',293776),(4,'Adena','Vaughan','Rina Cooke','2015-01-01','Côte D\'Ivoire (Ivory Coast)',542869),(5,'Elliott','Gardner','Tallulah Mckenzie','2000-02-05','Cocos (Keeling) Islands',1588),(6,'Hilel','Guerrero','Sara Hill','2017-05-01','Virgin Islands, United States',928510),(7,'Constance','Fields','Chastity Lancaster','2001-08-09','Kyrgyzstan',193),(8,'Alyssa','Booth','Amena Wooten','2009-07-09','Isle of Man',146932),(9,'Darrel','Carey','Christine Curtis','2012-09-08','Falkland Islands',705333),(10,'Kyla','Powers','Victoria Yates','2001-12-02','Jordan',622402),(11,'Guinevere','Underwood','Xyla Ortega','2096-01-25','Grenada',520698),(12,'William','Zamora','Kirsten Bryant','2012-01-03','Viet Nam',564836),(13,'Veda','Simon','Halla Russo','2005-06-07','Iraq',96270),(14,'Serina','Lawrence','Beverly Newton','2008-02-20','Antigua and Barbuda',481379),(15,'Harlan','Nixon','Linda Richard','2004-03-09','Moldova',643654),(16,'Fletcher','Castro','Amanda Dotson','2009-02-08','Denmark',408724),(17,'Channing','Simon','Maxine Patrick','2015-05-07','Virgin Islands, United States',369419),(18,'Lavinia','Pope','Yen Wallace','2001-03-05','Bangladesh',408166),(19,'Charissa','Rice','Basia Richardson','1998-10-25','Ireland',134871),(20,'Brandon','Malone','Hadassah Pace','2005-12-02','Fiji',914816),(21,'Guinevere','Underwood','Xyla Ortega','2096-01-25','Grenada',520698),(22,'William','Zamora','Kirsten Bryant','2012-01-03','Viet Nam',564836),(23,'Veda','Simon','Halla Russo','2005-06-07','Iraq',96270),(24,'Serina','Lawrence','Beverly Newton','2008-02-20','Antigua and Barbuda',481379),(25,'Harlan','Nixon','Linda Richard','2004-03-09','Moldova',643654),(26,'Fletcher','Castro','Amanda Dotson','2009-02-08','Denmark',408724),(27,'Channing','Simon','Maxine Patrick','2015-05-07','Virgin Islands, United States',369419),(28,'Lavinia','Pope','Yen Wallace','2001-03-05','Bangladesh',408166),(29,'Charissa','Rice','Basia Richardson','1998-10-25','Ireland',134871),(30,'Brandon','Malone','Hadassah Pace','2005-12-02','Fiji',914816),(31,'Damian','Dejesus','Keelie Wade','2020-11-25','Namibia',620935),(32,'Shaine','Savage','Eliana Michael','2012-02-01','Chad',733627),(33,'Wing','Emerson','Jael Baker','2009-10-10','Malta',850214),(34,'Desiree','Richards','Candice Lopez','2003-03-01','Belarus',291216),(35,'Cyrus','Bartlett','Madeline Kennedy','2019-01-01','France',47818),(36,'Brody','Guerrero','Jasmine Kline','2000-07-03','Hong Kong',163116),(37,'Clark','Strickland','Blythe Tran','2000-03-19','New Caledonia',827968),(38,'Haviva','Chaney','Velma Jimenez','1992-11-15','Cocos (Keeling) Islands',741812),(39,'Harper','Mccoy','Emma Benton','2003-11-25','Taiwan',570756),(40,'Elizabeth','Carrillo','Stephanie Bryant','2005-05-05','Burkina Faso',462331);
 /*!40000 ALTER TABLE `Artista` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `Cancion`
+-- Table structure for table `Auditoria`
 --
 
-DROP TABLE IF EXISTS `Cancion`;
+DROP TABLE IF EXISTS `Auditoria`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Cancion` (
-  `id_cancion` int(11) NOT NULL AUTO_INCREMENT,
-  `interprete` int(11) DEFAULT NULL,
-  `titulo_cancion` varchar(45) NOT NULL,
-  `duracion` time DEFAULT NULL,
-  `reproducciones` float DEFAULT NULL,
-  PRIMARY KEY (`id_cancion`),
-  KEY `interprete` (`interprete`),
-  CONSTRAINT `Cancion_ibfk_1` FOREIGN KEY (`interprete`) REFERENCES `Artista` (`id_artista`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+CREATE TABLE `Auditoria` (
+  `Id_Auditoria` int(11) NOT NULL AUTO_INCREMENT,
+  `Procedimiento` varchar(50) DEFAULT NULL,
+  `Entrada` time DEFAULT NULL,
+  `Salida` time DEFAULT NULL,
+  `Id_Usuario` int(11) NOT NULL,
+  `fecha_ingreso` date DEFAULT NULL,
+  PRIMARY KEY (`Id_Auditoria`),
+  KEY `Id_Usuario` (`Id_Usuario`),
+  CONSTRAINT `Id_Usuario` FOREIGN KEY (`Id_Usuario`) REFERENCES `Usuario` (`Id_Usuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Cancion`
+-- Dumping data for table `Auditoria`
 --
 
-LOCK TABLES `Cancion` WRITE;
-/*!40000 ALTER TABLE `Cancion` DISABLE KEYS */;
-INSERT INTO `Cancion` VALUES (1,1,'La nueva y la ex','03:44:00',341543000),(2,2,'Lose you to love me','03:21:00',279833000),(3,3,'Chillax','03:01:00',1021940000),(4,4,'7 rings','03:10:00',768544000),(5,5,'Company','02:56:00',576486000),(6,6,'Labios compartidos','03:19:00',1499570000),(7,7,'Who am I','02:54:00',338909000),(8,8,'Si veo a tu mamá','03:00:00',2421950000),(9,9,'Humble','04:01:00',715235000),(10,10,'Sober','03:39:00',32873300);
-/*!40000 ALTER TABLE `Cancion` ENABLE KEYS */;
+LOCK TABLES `Auditoria` WRITE;
+/*!40000 ALTER TABLE `Auditoria` DISABLE KEYS */;
+INSERT INTO `Auditoria` VALUES (2,'Editar Usuario','04:30:00','06:30:00',2,'1996-02-20'),(3,'Escuchar musica','02:15:00','02:50:00',3,'1996-03-26'),(4,'Escuchar musica','01:10:00','04:20:00',3,'2000-02-15'),(5,'Escuchar musica','01:15:00','10:20:00',3,'2001-02-12'),(6,'Escuchar musica','14:10:00','16:25:00',3,'2002-12-23'),(7,'Escuchar musica','02:25:00','06:25:00',4,'2005-11-10'),(8,'Subir Cancion','01:00:00','04:00:00',2,'2006-05-06'),(9,'Escuchar musica','02:10:00','04:05:00',5,'2007-07-12'),(10,'Escuchar musica','16:15:00','18:25:00',14,'2008-07-14'),(11,'Escuchar musica','10:02:00','12:00:00',15,'2009-01-12'),(12,'Escuchar musica','10:00:00','12:00:00',16,'2010-02-03'),(13,'Escuchar musica','10:00:00','14:00:00',17,'1996-03-21'),(14,'Escuchar musica','12:14:00','14:30:00',16,'2014-03-21'),(15,'Solicitar artista','01:00:00','02:00:00',20,'2015-03-18'),(16,'Escuchar musica','02:00:00','03:00:00',3,'2016-03-21'),(17,'Escuchar musica','03:00:00','04:00:00',19,'2017-03-17'),(18,'Escuchar musica','04:00:00','05:00:00',20,'2018-03-25'),(19,'Escuchar musica','05:00:00','06:00:00',17,'2019-03-18'),(20,'Solisitar Artista','06:00:00','07:00:00',42,'2020-04-18'),(21,'Escuchar musica','07:00:00','08:00:00',20,'2020-05-14'),(22,'Escuchar musica','08:00:00','09:00:00',45,'2020-05-30'),(23,'Escuchar musica','09:00:00','10:00:00',18,'2020-04-25'),(24,'Escuchar musica','10:00:00','11:00:00',49,'2020-03-23'),(25,'Escuchar musica','11:00:00','12:00:00',50,'2020-03-31');
+/*!40000 ALTER TABLE `Auditoria` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `Contrasena`
+-- Table structure for table `Canciones`
 --
 
-DROP TABLE IF EXISTS `Contrasena`;
+DROP TABLE IF EXISTS `Canciones`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Contrasena` (
-  `idContrasena` int(11) NOT NULL AUTO_INCREMENT,
-  `c_contrasenia` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`idContrasena`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+CREATE TABLE `Canciones` (
+  `Id_Canciones` int(11) NOT NULL AUTO_INCREMENT,
+  `Id_Disco` int(11) DEFAULT NULL,
+  `Nombre_Cancion` varchar(50) NOT NULL,
+  `Numero_Visitas` int(11) DEFAULT NULL,
+  `Duracion_Cancion` double DEFAULT NULL,
+  `Descripcion_De_Cancion` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`Id_Canciones`),
+  KEY `Id_Disco` (`Id_Disco`),
+  CONSTRAINT `Canciones_ibfk_1` FOREIGN KEY (`Id_Disco`) REFERENCES `Disco` (`Id_Disco`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Contrasena`
+-- Dumping data for table `Canciones`
 --
 
-LOCK TABLES `Contrasena` WRITE;
-/*!40000 ALTER TABLE `Contrasena` DISABLE KEYS */;
-INSERT INTO `Contrasena` VALUES (1,'ZHH14MTC1IF'),(2,'EBQ30EPA9SC'),(3,'KYG51HCM1IK'),(4,'WUK46WNA3LQ'),(5,'ZXL38IRQ6RH'),(6,'XFZ24RZY7YJ'),(7,'JPX39ZDE9SC'),(8,'SVE96THV3AS'),(9,'DOF17QIP0FT'),(10,'JGM04ZNN6QT');
-/*!40000 ALTER TABLE `Contrasena` ENABLE KEYS */;
+LOCK TABLES `Canciones` WRITE;
+/*!40000 ALTER TABLE `Canciones` DISABLE KEYS */;
+INSERT INTO `Canciones` VALUES (1,1,'Adan y Eva',25000,3,'Historia de un amor'),(2,1,'La Valse D’Amélie',33333,3,' escritas pensando en el nombre de una mujer'),(3,2,'La bella y la bestia',20000,4,'jamintented del rick'),(4,2,' Blanca',10000,2,'la mujer de mi vida '),(5,1,'La mas bella',16000,3,'salsa cubana en la abana'),(6,2,'El amor',12000,3,'La magia del amor Ricardo Arjona'),(7,6,'Señora Mia',10000,2,'Una historia de amor'),(8,3,'El Dial',12000,2,'Historia del dial ambiental Mauricio Sarri'),(9,5,'La diabla ',10000,3,'Romeo santos albun 2012'),(10,4,'El tiburon',100000,3,'llego tu tiburon anbiente regueton'),(11,4,'Amigo',14254,1,'Romeo santos '),(12,2,'Lluvia',1425872,3,'salsa romantica '),(13,2,'pedro',100000,4,'salsa romantica ');
+/*!40000 ALTER TABLE `Canciones` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Temporary table structure for view `IngresoUsuario`
+-- Temporary table structure for view `Canciones_favoritas_De_Usuarios`
 --
 
-DROP TABLE IF EXISTS `IngresoUsuario`;
-/*!50001 DROP VIEW IF EXISTS `IngresoUsuario`*/;
+DROP TABLE IF EXISTS `Canciones_favoritas_De_Usuarios`;
+/*!50001 DROP VIEW IF EXISTS `Canciones_favoritas_De_Usuarios`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE TABLE `IngresoUsuario` (
-  `username` tinyint NOT NULL,
-  `ultima_fecha_ingreso` tinyint NOT NULL,
-  `entrada` tinyint NOT NULL,
-  `salida` tinyint NOT NULL,
-  `cantidad_ingreso` tinyint NOT NULL
+/*!50001 CREATE TABLE `Canciones_favoritas_De_Usuarios` (
+  `Id_Usuario` tinyint NOT NULL,
+  `Usuario` tinyint NOT NULL,
+  `Nombre_Cancion` tinyint NOT NULL,
+  `Duracion_Cancion` tinyint NOT NULL,
+  `Numero_Visitas` tinyint NOT NULL,
+  `Descripcion_De_Cancion` tinyint NOT NULL,
+  `Nombre_Disco` tinyint NOT NULL,
+  `Numero_De_Canciones` tinyint NOT NULL,
+  `Fecha_Lanzamiento` tinyint NOT NULL,
+  `Nombre_Artista` tinyint NOT NULL,
+  `Apellido_Artista` tinyint NOT NULL,
+  `Alias` tinyint NOT NULL,
+  `Fecha_Nacimento` tinyint NOT NULL,
+  `Nacionalidad` tinyint NOT NULL,
+  `Numero_Seguidores` tinyint NOT NULL
 ) ENGINE=MyISAM */;
 SET character_set_client = @saved_cs_client;
 
 --
--- Table structure for table `Ingresos`
+-- Table structure for table `Disco`
 --
 
-DROP TABLE IF EXISTS `Ingresos`;
+DROP TABLE IF EXISTS `Disco`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Ingresos` (
-  `id_ingresos` int(11) NOT NULL,
-  `fecha_ingreso` date DEFAULT NULL,
-  `entrada` time DEFAULT NULL,
-  `salida` time DEFAULT NULL,
-  `CodUser` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_ingresos`),
-  KEY `CodUser` (`CodUser`),
-  CONSTRAINT `Ingresos_ibfk_1` FOREIGN KEY (`CodUser`) REFERENCES `Usuario` (`id_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `Disco` (
+  `Id_Disco` int(11) NOT NULL AUTO_INCREMENT,
+  `Id_Artista` int(11) DEFAULT NULL,
+  `Nombre_Disco` varchar(50) NOT NULL,
+  `Numero_De_Canciones` int(11) DEFAULT NULL,
+  `Fecha_Lanzamiento` date DEFAULT NULL,
+  `Descripcion_Disco` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`Id_Disco`),
+  KEY `Id_Artista` (`Id_Artista`),
+  CONSTRAINT `Disco_ibfk_1` FOREIGN KEY (`Id_Artista`) REFERENCES `Artista` (`Id_Artista`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Ingresos`
+-- Dumping data for table `Disco`
 --
 
-LOCK TABLES `Ingresos` WRITE;
-/*!40000 ALTER TABLE `Ingresos` DISABLE KEYS */;
-INSERT INTO `Ingresos` VALUES (1,'2010-05-12','04:30:00','06:30:00',1),(2,'2019-09-24','14:30:05','15:09:04',2),(3,'2018-04-21','13:18:39','14:30:02',3),(4,'2009-12-12','09:45:10','09:50:00',4),(5,'2012-11-10','10:01:03','11:03:30',5),(6,'2014-06-02','08:30:47','08:35:12',6),(7,'2019-07-12','07:00:04','07:32:19',7),(8,'2018-03-26','16:48:55','17:34:38',8),(9,'2018-04-23','21:38:45','21:54:36',9),(10,'2019-10-10','23:23:23','23:45:00',10);
-/*!40000 ALTER TABLE `Ingresos` ENABLE KEYS */;
+LOCK TABLES `Disco` WRITE;
+/*!40000 ALTER TABLE `Disco` DISABLE KEYS */;
+INSERT INTO `Disco` VALUES (1,1,'Mi Corazon',10,'2000-12-20','Leto en Mi corazon'),(2,2,'Siembra',20,'1986-10-15','Fania Records'),(3,3,'Live at the Cheetah',10,'1996-02-10','Es el gran disco de las Estrellas de Fania'),(4,4,'De ti depende',6,'1995-11-01','El mayor icono del género'),(5,5,'Yo soy del son a la salsa',22,'1986-12-25','Varios artistas, Universal'),(6,6,'En vivo',10,'2000-10-30','EL universal cantante'),(7,7,'Lo mejor de Joe Arrollo',20,'2010-03-09','Lo mejor '),(8,8,'Una década',10,'2010-12-03','Desde cuba con amor'),(9,9,'Una década',6,'2015-09-02','Sonora Ponceña, Música Latina Internacional, 1985');
+/*!40000 ALTER TABLE `Disco` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `Podcasts`
+-- Table structure for table `Favoritas`
 --
 
-DROP TABLE IF EXISTS `Podcasts`;
+DROP TABLE IF EXISTS `Favoritas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Podcasts` (
-  `id_podcasts` int(11) NOT NULL AUTO_INCREMENT,
-  `titulo` varchar(45) NOT NULL,
-  PRIMARY KEY (`id_podcasts`),
-  UNIQUE KEY `titulo` (`titulo`)
+CREATE TABLE `Favoritas` (
+  `Id_Favotitas` int(11) NOT NULL AUTO_INCREMENT,
+  `Id_Usuario` int(11) DEFAULT NULL,
+  `Id_Canciones` int(11) DEFAULT NULL,
+  PRIMARY KEY (`Id_Favotitas`),
+  KEY `Id_Usuario` (`Id_Usuario`),
+  KEY `Id_Canciones` (`Id_Canciones`),
+  CONSTRAINT `Favoritas_ibfk_1` FOREIGN KEY (`Id_Usuario`) REFERENCES `Usuario` (`Id_Usuario`),
+  CONSTRAINT `Favoritas_ibfk_2` FOREIGN KEY (`Id_Canciones`) REFERENCES `Canciones` (`Id_Canciones`)
+) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Favoritas`
+--
+
+LOCK TABLES `Favoritas` WRITE;
+/*!40000 ALTER TABLE `Favoritas` DISABLE KEYS */;
+INSERT INTO `Favoritas` VALUES (38,2,1),(39,3,2),(49,4,3),(50,5,4),(51,14,5),(52,15,6),(53,16,7),(54,17,8),(55,18,9),(56,19,10),(57,20,11);
+/*!40000 ALTER TABLE `Favoritas` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Lista_Reproducciones`
+--
+
+DROP TABLE IF EXISTS `Lista_Reproducciones`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Lista_Reproducciones` (
+  `Id_LR` int(11) NOT NULL AUTO_INCREMENT,
+  `Id_Usuario` int(11) DEFAULT NULL,
+  PRIMARY KEY (`Id_LR`),
+  KEY `Id_Usuario` (`Id_Usuario`),
+  CONSTRAINT `Lista_Reproducciones_ibfk_1` FOREIGN KEY (`Id_Usuario`) REFERENCES `Usuario` (`Id_Usuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Lista_Reproducciones`
+--
+
+LOCK TABLES `Lista_Reproducciones` WRITE;
+/*!40000 ALTER TABLE `Lista_Reproducciones` DISABLE KEYS */;
+INSERT INTO `Lista_Reproducciones` VALUES (15,2),(16,3),(30,4),(31,5),(32,14),(33,15),(34,16),(35,17),(36,18),(37,19),(38,20);
+/*!40000 ALTER TABLE `Lista_Reproducciones` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Login`
+--
+
+DROP TABLE IF EXISTS `Login`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Login` (
+  `Id_Login` int(11) NOT NULL AUTO_INCREMENT,
+  `Correo` varchar(50) NOT NULL,
+  `Recuperacion_Pass` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`Id_Login`),
+  UNIQUE KEY `Correo` (`Correo`)
+) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Login`
+--
+
+LOCK TABLES `Login` WRITE;
+/*!40000 ALTER TABLE `Login` DISABLE KEYS */;
+INSERT INTO `Login` VALUES (1,'vitae.semper@faucibusorci.co.uk','Austin'),(2,'feugiat@cursusNunc.edu','Fritz'),(3,'Phasellus@mauris.org','Zenia'),(4,'eget.ipsum.Suspendisse@in.co.uk','Patricia'),(5,'vulputate.posuere@Nullamnisl.org','Zachery'),(6,'convallis@placerat.edu','Brenden'),(7,'elit.pellentesque.a@pedeCum.co.uk','Igor'),(8,'et@scelerisqueneque.org','Galvin'),(9,'fermentum.metus.Aenean@dictumeueleifend.org','Basil'),(10,'eu.nulla.at@ipsum.edu','Shafira'),(11,'Vestibulum.ante@sagittisDuis.ca','Kaye'),(12,'luctus@dapibusrutrumjusto.net','Yen'),(13,'magna.Praesent.interdum@Donecelementum.co.uk','Yolanda'),(14,'amet.ante@lectusCumsociis.edu','TaShya'),(15,'cursus.luctus@euismod.edu','Declan'),(16,'Vestibulum.ut@tinciduntdui.edu','Otto'),(17,'amet@etlaciniavitae.ca','Nicholas'),(18,'iaculis@erat.ca','Larissa'),(19,'Proin.velit@Phasellusinfelis.co.uk','Macon'),(20,'Mauris.eu@maurissit.co.uk','Bernard'),(21,'Maecenas.iaculis.aliquet@etmalesuadafames.net','GBV46PQH7NY'),(22,'ligula@molestie.co.uk','ZDZ64WYE1HM'),(23,'malesuada.fringilla@magna.ca','OUM94OIY0QB'),(24,'dolor.quam.elementum@Integerid.com','BIF41CJV0QM'),(25,'egestas@Phasellus.edu','JDK08HCB0TT'),(26,'vulputate@Aliquamauctorvelit.co.uk','HMV78JQW1WQ'),(27,'arcu.eu@Inornare.ca','DOH87PJH3VK'),(28,'arcu@iaculisquispede.co.uk','KNN20CEW6XR'),(29,'Maecenas.libero.est@ettristiquepellentesque.co.uk','JEU11CHT3MW'),(30,'gravida.mauris@pedeetrisus.ca','IQA49ROZ5EV'),(31,'neque.Nullam@neceuismodin.edu','NLT66PDC8QL'),(32,'pede.ultrices.a@ametrisus.com','HJB71IVI6NY'),(33,'quis@lacuspede.edu','GQH94OQJ4ZR'),(34,'sagittis.Nullam.vitae@dictumauguemalesuada.net','TOF54MJD7ZB'),(35,'non.enim.commodo@dictumplacerataugue.ca','SEI28EUI4LU'),(36,'magna@laciniamattis.org','QBG97JHV0XN'),(37,'Nulla.tincidunt@feugiattelluslorem.com','CPT02LAI9OL'),(38,'felis.ullamcorper@ultriciesligulaNullam.com','XPZ16IFQ1GC'),(39,'laoreet.libero.et@erosProin.net','ZRU83KUU4EG'),(40,'nascetur@Donec.net','CAN48SQO8OT'),(41,'velit.eu@atortorNunc.org','WAF40VHQ0VF'),(42,'vestibulum.massa@risus.edu','LEB77BPO2MJ'),(43,'Donec.luctus@blanditmattisCras.org','ICD19NUV9BH'),(44,'in.molestie.tortor@ac.ca','OIN37PIS2KV'),(45,'elit@temporerat.ca','SHX45ONI9KC'),(46,'senectus.et.netus@Uttinciduntorci.edu','TNE83WDL9RO'),(47,'Phasellus@nisiMauris.co.uk','KLS15TXH9KQ'),(48,'blandit@amet.org','HMM01ETK9KN'),(49,'Proin.velit.Sed@sitamet.net','TCC88OKB3MS'),(50,'natoque@tellussemmollis.co.uk','FSW47JUP7AU'),(51,'est.tempor@inceptoshymenaeosMauris.net','GPS12JJX4NX'),(52,'lacus.Quisque.purus@feugiat.net','RBV05IRP8VM'),(53,'ut@fringillapurusmauris.com','RLO48FCY6ZD'),(54,'nec.quam.Curabitur@loremfringilla.org','PMW38UYF6OZ'),(55,'lorem.ac.risus@Uttincidunt.net','OFP26DBW9AL'),(56,'porttitor.vulputate.posuere@gravida.org','OSB47SEY1DC'),(57,'enim.nec.tempus@adipiscing.org','XJR36AAY8EU'),(58,'vestibulum.neque@necmaurisblandit.net','TDR47CSX1CN'),(59,'Mauris@dolor.net','FJC61SII6LY'),(60,'eu.neque.pellentesque@ligula.net','OEJ54WPH9ZN'),(69,'nulla.vulputate@inceptoshymenaeos.co.uk','VMM55HLQ1JD'),(70,'sed.sapien@necimperdiet.edu','FAX65GOY3TD'),(71,'Integer@neque.co.uk','UQT98GQZ4US'),(72,'consequat@atlacus.ca','FJV66WYL9RJ'),(73,'lectus.rutrum@Sednunc.co.uk','COP54YEQ6GT'),(74,'vulputate.velit@consectetueradipiscing.edu','WSS16VMN7TE'),(75,'Praesent.eu.dui@metusvitaevelit.ca','SYC57EWO7DF'),(76,'Cras@quam.org','KKQ93NWK3LT'),(77,'Donec@quamquisdiam.ca','XFY32BNF6JW'),(78,'pede.sagittis@aceleifendvitae.edu','YWV56SRP2FX'),(79,'orci.luctus.et@nisiCumsociis.org','NGC90PPV5ZE'),(80,'nec.urna.et@mauris.net','MAB69FNZ2ZZ'),(81,'nibh.lacinia.orci@erosturpis.net','GYG65DLB2IO'),(82,'a.felis.ullamcorper@eu.ca','UXK22LCX4SF'),(83,'vitae.mauris@vitaeorciPhasellus.edu','NLE30MGZ6UM'),(84,'feugiat@posuereenim.net','SHF42RMT8HF'),(85,'lectus.sit.amet@acsem.org','ROU62UNW4PD'),(86,'vel.faucibus@vitae.org','TGP26BNM5JX'),(87,'Quisque.ac@loremsit.co.uk','RYJ36UIO0NX'),(88,'ante.ipsum.primis@quam.edu','OFT07QTJ7UN'),(89,'mus.Proin@Uttinciduntvehicula.ca','TJA90PGX4MH'),(90,'mauris.sit@consequatenimdiam.ca','AQN30SDV8NM'),(91,'orci.luctus.et@dolordolortempus.co.uk','TWK30ZME6HH'),(92,'ornare.tortor.at@Etiamligulatortor.org','SFM26GTQ6PE'),(93,'accumsan.neque.et@Aliquam.com','IRS44DYP2XB'),(94,'gravida.mauris.ut@sed.edu','ICG22IWX0TH'),(95,'ligula@quamquisdiam.ca','DNW65DOR8DI'),(96,'tempus.lorem@nuncestmollis.ca','HVM99LXH9HS'),(97,'mauris.a@gravida.ca','QMR37HNO2ZW'),(98,'scelerisque@necimperdietnec.com','OID98WKL1JY'),(99,'tincidunt@non.ca','VLG90WZE8NU'),(100,'Mauris.vel@ipsumleo.net','GGA23UFM2RC'),(101,'Sed.molestie.Sed@orciPhasellus.ca','INF42DVI2WW'),(102,'eleifend@convallis.com','IND29QAL0GU'),(103,'eget.ipsum@aliquetPhasellusfermentum.net','DUN27FFX8DK'),(104,'Donec@elit.net','NWX16NBB8EA'),(105,'Nullam.lobortis.quam@Proin.edu','WWU50QBU6NN'),(106,'Nunc.pulvinar@orci.com','PND31HHR9BP'),(107,'Fusce@velvenenatisvel.org','BVQ49KJG8AP'),(108,'orci.Donec.nibh@purus.co.uk','CBF70RNF9IP'),(109,'libero.Proin.sed@fringillaest.net','TVN92KTI6MZ'),(110,'tellus@pedemalesuadavel.edu','LWK00UAB5ON'),(111,'vehicula.risus.Nulla@duisemper.edu','NGZ29OKC7TF'),(112,'quis@vitaevelitegestas.ca','MOG30CWC0GD');
+/*!40000 ALTER TABLE `Login` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Pago`
+--
+
+DROP TABLE IF EXISTS `Pago`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Pago` (
+  `Id_Pago` int(11) NOT NULL AUTO_INCREMENT,
+  `Id_Usuario` int(11) DEFAULT NULL,
+  `Nombre_Pro_Tarjeta` varchar(50) NOT NULL,
+  `Numero_Tarjeta` float DEFAULT NULL,
+  `Fecha_Vencimiento` varchar(7) NOT NULL,
+  `Codigo_Seguridad` int(3) NOT NULL,
+  PRIMARY KEY (`Id_Pago`),
+  UNIQUE KEY `Nombre_Pro_Tarjeta` (`Nombre_Pro_Tarjeta`),
+  UNIQUE KEY `Numero_Tarjeta` (`Numero_Tarjeta`),
+  KEY `Id_Usuario` (`Id_Usuario`),
+  CONSTRAINT `Pago_ibfk_1` FOREIGN KEY (`Id_Usuario`) REFERENCES `Usuario` (`Id_Usuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Pago`
+--
+
+LOCK TABLES `Pago` WRITE;
+/*!40000 ALTER TABLE `Pago` DISABLE KEYS */;
+INSERT INTO `Pago` VALUES (1,2,'Brayan Mina',2.12542e16,'02/2020',625),(2,3,'Elias Mai',2.14524e15,'03/2015',675);
+/*!40000 ALTER TABLE `Pago` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Temporary table structure for view `ReporteIngresoDeUsuario`
+--
+
+DROP TABLE IF EXISTS `ReporteIngresoDeUsuario`;
+/*!50001 DROP VIEW IF EXISTS `ReporteIngresoDeUsuario`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `ReporteIngresoDeUsuario` (
+  `Nombre_Usuario` tinyint NOT NULL,
+  `Ultima_fecha_Ingreso` tinyint NOT NULL,
+  `Entrada` tinyint NOT NULL,
+  `Salida` tinyint NOT NULL,
+  `Cantidad_Ingreso` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `Reporte_Canciones_Mas_Escuchadas`
+--
+
+DROP TABLE IF EXISTS `Reporte_Canciones_Mas_Escuchadas`;
+/*!50001 DROP VIEW IF EXISTS `Reporte_Canciones_Mas_Escuchadas`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `Reporte_Canciones_Mas_Escuchadas` (
+  `Nombre_Cancion` tinyint NOT NULL,
+  `Nombre_Disco` tinyint NOT NULL,
+  `Nombre_Artististico` tinyint NOT NULL,
+  `Cant_visitas` tinyint NOT NULL,
+  `Usuarios_diferentes` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Table structure for table `Restrincion`
+--
+
+DROP TABLE IF EXISTS `Restrincion`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Restrincion` (
+  `Id_Restrincion` int(11) NOT NULL AUTO_INCREMENT,
+  `Nombre_Restrincion` varchar(50) NOT NULL,
+  PRIMARY KEY (`Id_Restrincion`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Restrincion`
+--
+
+LOCK TABLES `Restrincion` WRITE;
+/*!40000 ALTER TABLE `Restrincion` DISABLE KEYS */;
+INSERT INTO `Restrincion` VALUES (1,'lectura'),(2,'lectura y escriptura'),(3,'lectura, escriptura'),(4,'lectura, escriptura, eliminar');
+/*!40000 ALTER TABLE `Restrincion` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Rol`
+--
+
+DROP TABLE IF EXISTS `Rol`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Rol` (
+  `Id_Rol` int(11) NOT NULL AUTO_INCREMENT,
+  `Nombre_Del_Rol` varchar(50) NOT NULL,
+  `Id_Restrincion` int(11) DEFAULT NULL,
+  PRIMARY KEY (`Id_Rol`),
+  KEY `fk_id_Rol` (`Id_Restrincion`),
+  CONSTRAINT `fk_id_Rol` FOREIGN KEY (`Id_Restrincion`) REFERENCES `Restrincion` (`Id_Restrincion`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Rol`
+--
+
+LOCK TABLES `Rol` WRITE;
+/*!40000 ALTER TABLE `Rol` DISABLE KEYS */;
+INSERT INTO `Rol` VALUES (1,'Administrador',4),(2,'Digitador',3),(3,'Coordinador',2),(4,'Monitor Evaluador',2),(5,'Investigador de Recursos',2),(6,'Invitado',1),(7,'Implementador',2),(8,'Cohesionador',2);
+/*!40000 ALTER TABLE `Rol` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Seguidores`
+--
+
+DROP TABLE IF EXISTS `Seguidores`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Seguidores` (
+  `Id_Seguidores` int(11) NOT NULL AUTO_INCREMENT,
+  `Id_Usuario` int(11) DEFAULT NULL,
+  PRIMARY KEY (`Id_Seguidores`),
+  KEY `Id_Usuario` (`Id_Usuario`),
+  CONSTRAINT `Seguidores_ibfk_1` FOREIGN KEY (`Id_Usuario`) REFERENCES `Usuario` (`Id_Usuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Seguidores`
+--
+
+LOCK TABLES `Seguidores` WRITE;
+/*!40000 ALTER TABLE `Seguidores` DISABLE KEYS */;
+INSERT INTO `Seguidores` VALUES (3,2),(4,3),(24,4),(25,5),(26,14),(27,15),(28,16),(29,17),(30,18),(31,19),(32,20);
+/*!40000 ALTER TABLE `Seguidores` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Sugerencia_Canciones`
+--
+
+DROP TABLE IF EXISTS `Sugerencia_Canciones`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Sugerencia_Canciones` (
+  `Id_Sugerencias` int(11) NOT NULL AUTO_INCREMENT,
+  `Id_LR` int(11) DEFAULT NULL,
+  `Id_Canciones` int(11) DEFAULT NULL,
+  PRIMARY KEY (`Id_Sugerencias`),
+  KEY `Id_Canciones` (`Id_Canciones`),
+  KEY `Id_LR` (`Id_LR`),
+  CONSTRAINT `Sugerencia_Canciones_ibfk_1` FOREIGN KEY (`Id_Canciones`) REFERENCES `Canciones` (`Id_Canciones`),
+  CONSTRAINT `Sugerencia_Canciones_ibfk_2` FOREIGN KEY (`Id_LR`) REFERENCES `Lista_Reproducciones` (`Id_LR`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Podcasts`
+-- Dumping data for table `Sugerencia_Canciones`
 --
 
-LOCK TABLES `Podcasts` WRITE;
-/*!40000 ALTER TABLE `Podcasts` DISABLE KEYS */;
-INSERT INTO `Podcasts` VALUES (5,'Conanr'),(1,'Fisher'),(8,'Hirames'),(2,'Klein'),(9,'Macaulope'),(3,'Russo'),(4,'Salinas'),(10,'Thorray'),(6,'Watkins'),(7,'Xamolina');
-/*!40000 ALTER TABLE `Podcasts` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `Roles`
---
-
-DROP TABLE IF EXISTS `Roles`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Roles` (
-  `id_rol` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre_rol` varchar(20) NOT NULL,
-  PRIMARY KEY (`id_rol`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `Roles`
---
-
-LOCK TABLES `Roles` WRITE;
-/*!40000 ALTER TABLE `Roles` DISABLE KEYS */;
-INSERT INTO `Roles` VALUES (1,'Administrador'),(2,'PremiumDuo'),(3,'PremiumUniversitario'),(4,'PremiumFamiliar'),(5,'PremiumIndividual'),(6,'Basico');
-/*!40000 ALTER TABLE `Roles` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `Tarjeta`
---
-
-DROP TABLE IF EXISTS `Tarjeta`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Tarjeta` (
-  `idTarjeta` int(11) NOT NULL,
-  `CodUser` int(11) DEFAULT NULL,
-  `NumTarjeta` float DEFAULT NULL,
-  `FechaExpTarjeta` date NOT NULL,
-  `cvcTarjeta` int(11) NOT NULL,
-  PRIMARY KEY (`idTarjeta`),
-  UNIQUE KEY `NumTarjeta` (`NumTarjeta`),
-  KEY `fk_tarjetauser` (`CodUser`),
-  CONSTRAINT `fk_tarjetauser` FOREIGN KEY (`CodUser`) REFERENCES `Usuario` (`id_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `Tarjeta`
---
-
-LOCK TABLES `Tarjeta` WRITE;
-/*!40000 ALTER TABLE `Tarjeta` DISABLE KEYS */;
-INSERT INTO `Tarjeta` VALUES (1,NULL,4.28665e15,'2021-01-03',604),(2,NULL,4929030000000,'2020-08-13',156),(3,NULL,4.71648e15,'2020-11-18',645),(4,NULL,4024010000000,'2020-08-31',761),(5,NULL,4.53938e15,'2020-06-16',294),(6,NULL,4532270000000,'2021-03-26',498),(7,NULL,4716960000000,'2020-11-10',424),(8,NULL,4.556e15,'2021-02-28',714),(9,NULL,4539250000000,'2020-08-23',760),(10,NULL,4598260000000,'2020-12-22',994);
-/*!40000 ALTER TABLE `Tarjeta` ENABLE KEYS */;
+LOCK TABLES `Sugerencia_Canciones` WRITE;
+/*!40000 ALTER TABLE `Sugerencia_Canciones` DISABLE KEYS */;
+INSERT INTO `Sugerencia_Canciones` VALUES (1,15,1),(2,16,2),(3,31,3),(4,32,4),(5,33,5),(6,34,6),(7,35,7),(8,36,8),(9,37,9),(10,37,10);
+/*!40000 ALTER TABLE `Sugerencia_Canciones` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -255,24 +422,18 @@ DROP TABLE IF EXISTS `Usuario`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Usuario` (
-  `id_user` int(11) NOT NULL AUTO_INCREMENT,
-  `CodPodcasts` int(11) DEFAULT NULL,
-  `CodRol` int(11) DEFAULT NULL,
-  `username` varchar(45) NOT NULL,
-  `email` varchar(45) NOT NULL,
-  `contrasenia` int(11) DEFAULT NULL,
-  `fecha_nacimiento` date NOT NULL,
-  `sexo` char(1) DEFAULT NULL,
-  PRIMARY KEY (`id_user`),
-  UNIQUE KEY `username` (`username`),
-  UNIQUE KEY `email` (`email`),
-  KEY `contrasenia` (`contrasenia`),
-  KEY `fk_podcastsusuario` (`CodPodcasts`),
-  KEY `fk_rolesuser` (`CodRol`),
-  CONSTRAINT `Usuario_ibfk_1` FOREIGN KEY (`contrasenia`) REFERENCES `Contrasena` (`idContrasena`),
-  CONSTRAINT `fk_podcastsusuario` FOREIGN KEY (`CodPodcasts`) REFERENCES `Podcasts` (`id_podcasts`),
-  CONSTRAINT `fk_rolesuser` FOREIGN KEY (`CodRol`) REFERENCES `Roles` (`id_rol`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+  `Id_Usuario` int(11) NOT NULL AUTO_INCREMENT,
+  `Nombre_Usuario` varchar(50) NOT NULL,
+  `Apellido_Usuario` varchar(50) NOT NULL,
+  `fecha_Nacimiento` date NOT NULL,
+  `Id_Rol` int(11) DEFAULT NULL,
+  `Id_Login` int(11) DEFAULT NULL,
+  PRIMARY KEY (`Id_Usuario`),
+  KEY `Id_Rol` (`Id_Rol`),
+  KEY `Id_Login` (`Id_Login`),
+  CONSTRAINT `Usuario_ibfk_1` FOREIGN KEY (`Id_Rol`) REFERENCES `Rol` (`Id_Rol`),
+  CONSTRAINT `Usuario_ibfk_2` FOREIGN KEY (`Id_Login`) REFERENCES `Login` (`Id_Login`)
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -281,168 +442,16 @@ CREATE TABLE `Usuario` (
 
 LOCK TABLES `Usuario` WRITE;
 /*!40000 ALTER TABLE `Usuario` DISABLE KEYS */;
-INSERT INTO `Usuario` VALUES (1,1,1,'jmd234','velit.dui.semper@pellentesque.org',1,'1990-03-20','M'),(2,2,2,'jmowe232','erat.in@magnatellusfaucibus.co.uk',2,'1980-05-21','F'),(3,3,3,'weijp124','Nullam.feugiat@turpisNulla.edu',3,'1985-10-19','F'),(4,4,4,'32sdcs','aliquet.magna.a@egetmassaSuspendisse.net',4,'1993-06-20','M'),(5,5,5,'lkjoi23r','commodo.ipsum.Suspendisse@eratsemper.edu',5,'2009-03-19','F'),(6,6,6,'kjoi798','Praesent@DonecegestasDuis.net',6,'2010-04-19','F'),(7,7,3,'ohiuwe8','tincidunt@magna.ca',7,'2005-05-21','M'),(8,8,4,'hduey73','ut@eget.org',8,'2000-08-20','M'),(9,9,5,'dui873','et@magnisdisparturient.net',9,'2002-09-19','F'),(10,10,6,'francis78','Proin@amet.net',10,'2006-12-20','M');
+INSERT INTO `Usuario` VALUES (2,'Brayan','Morres','1992-01-25',1,1),(3,'Antonio','Milik','1892-05-30',2,2),(4,'Migel','Mael','1996-11-25',3,3),(5,'Marco','Merlin','1996-12-10',4,4),(14,'Deborah','Cochran','1996-02-15',2,93),(15,'Travis','Phillips','1996-02-15',7,39),(16,'Rebecca','Carver','1996-02-15',8,100),(17,'Abbot','Garrison','1996-02-15',1,41),(18,'Alexander','Carter','1996-02-15',8,84),(19,'Joseph','Trujillo','1996-02-15',6,94),(20,'Kirsten','Huffman','1996-02-15',4,73),(21,'Amery','Shaw','1996-02-15',3,23),(40,'Brett','Haley','1996-02-15',6,89),(42,'Giacomo','Oconnor','1996-02-15',4,39),(43,'Lacy','Warner','1996-02-15',3,91),(45,'Zelenia','Oneal','1996-02-15',5,28),(46,'Chandler','Cox','1996-02-15',2,59),(48,'Chelsea','Campbell','1996-02-15',3,38),(49,'Kendall','Brooks','1996-02-15',5,93),(50,'Octavius','Mclean','1996-02-15',7,72),(51,'Jada','Gibbs','1996-02-15',1,22),(52,'Fleur','Stark','1996-02-15',6,31),(53,'Macey','Strickland','1996-02-15',5,88);
 /*!40000 ALTER TABLE `Usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Temporary table structure for view `canciones_mas_escuchadas`
+-- Final view structure for view `Canciones_favoritas_De_Usuarios`
 --
 
-DROP TABLE IF EXISTS `canciones_mas_escuchadas`;
-/*!50001 DROP VIEW IF EXISTS `canciones_mas_escuchadas`*/;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
-/*!50001 CREATE TABLE `canciones_mas_escuchadas` (
-  `titulo_cancion` tinyint NOT NULL,
-  `titulo_album` tinyint NOT NULL,
-  `nombre_artista` tinyint NOT NULL,
-  `reproducciones` tinyint NOT NULL,
-  `usuarios_diferentes` tinyint NOT NULL
-) ENGINE=MyISAM */;
-SET character_set_client = @saved_cs_client;
-
---
--- Table structure for table `favSong`
---
-
-DROP TABLE IF EXISTS `favSong`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `favSong` (
-  `id_favSong` int(11) NOT NULL AUTO_INCREMENT,
-  `idcancion` int(11) DEFAULT NULL,
-  `interprete` int(11) DEFAULT NULL,
-  `idplaylist` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_favSong`),
-  KEY `idcancion` (`idcancion`),
-  KEY `interprete` (`interprete`),
-  KEY `idplaylist` (`idplaylist`),
-  CONSTRAINT `favSong_ibfk_1` FOREIGN KEY (`idcancion`) REFERENCES `Cancion` (`id_cancion`),
-  CONSTRAINT `favSong_ibfk_2` FOREIGN KEY (`interprete`) REFERENCES `Artista` (`id_artista`),
-  CONSTRAINT `favSong_ibfk_3` FOREIGN KEY (`idplaylist`) REFERENCES `playList` (`id_playList`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `favSong`
---
-
-LOCK TABLES `favSong` WRITE;
-/*!40000 ALTER TABLE `favSong` DISABLE KEYS */;
-INSERT INTO `favSong` VALUES (1,1,1,1),(2,2,2,2),(3,3,3,3),(4,4,4,4),(5,5,5,5),(6,6,6,6),(7,7,7,7),(8,8,8,8),(9,9,9,9),(10,10,10,10);
-/*!40000 ALTER TABLE `favSong` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Temporary table structure for view `oyentesmensuales`
---
-
-DROP TABLE IF EXISTS `oyentesmensuales`;
-/*!50001 DROP VIEW IF EXISTS `oyentesmensuales`*/;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
-/*!50001 CREATE TABLE `oyentesmensuales` (
-  `nombre_artista` tinyint NOT NULL,
-  `oyentes_mensuales` tinyint NOT NULL
-) ENGINE=MyISAM */;
-SET character_set_client = @saved_cs_client;
-
---
--- Table structure for table `playList`
---
-
-DROP TABLE IF EXISTS `playList`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `playList` (
-  `id_playList` int(11) NOT NULL AUTO_INCREMENT,
-  `titulo` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id_playList`),
-  UNIQUE KEY `titulo` (`titulo`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `playList`
---
-
-LOCK TABLES `playList` WRITE;
-/*!40000 ALTER TABLE `playList` DISABLE KEYS */;
-INSERT INTO `playList` VALUES (8,'Acline'),(5,'Buckminster'),(1,'Galvinlist'),(10,'Hip Hop 2020'),(3,'listHarrison'),(2,'listTaylor'),(7,'Marshalllist'),(4,'Pricelist'),(9,'sadsongs'),(6,'Shaw');
-/*!40000 ALTER TABLE `playList` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `recentlyListened`
---
-
-DROP TABLE IF EXISTS `recentlyListened`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `recentlyListened` (
-  `id_recentlyListened` int(11) NOT NULL AUTO_INCREMENT,
-  `idalbum` int(11) DEFAULT NULL,
-  `idcancion` int(11) DEFAULT NULL,
-  `idplaylist` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_recentlyListened`),
-  KEY `idalbum` (`idalbum`),
-  KEY `idcancion` (`idcancion`),
-  KEY `idplaylist` (`idplaylist`),
-  CONSTRAINT `recentlyListened_ibfk_1` FOREIGN KEY (`idalbum`) REFERENCES `Album` (`id_album`),
-  CONSTRAINT `recentlyListened_ibfk_2` FOREIGN KEY (`idcancion`) REFERENCES `Cancion` (`id_cancion`),
-  CONSTRAINT `recentlyListened_ibfk_3` FOREIGN KEY (`idplaylist`) REFERENCES `playList` (`id_playList`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `recentlyListened`
---
-
-LOCK TABLES `recentlyListened` WRITE;
-/*!40000 ALTER TABLE `recentlyListened` DISABLE KEYS */;
-INSERT INTO `recentlyListened` VALUES (1,1,1,1),(2,2,2,2),(3,3,3,3),(4,4,4,4),(5,5,5,5),(6,6,6,6),(7,7,7,7),(8,8,8,8),(9,9,9,9),(10,10,10,10);
-/*!40000 ALTER TABLE `recentlyListened` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `songsPlaylist`
---
-
-DROP TABLE IF EXISTS `songsPlaylist`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `songsPlaylist` (
-  `id_songsPlaylist` int(11) NOT NULL AUTO_INCREMENT,
-  `idplaylist` int(11) DEFAULT NULL,
-  `interprete` int(11) DEFAULT NULL,
-  `idcancion` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_songsPlaylist`),
-  KEY `idplaylist` (`idplaylist`),
-  KEY `interprete` (`interprete`),
-  KEY `idcancion` (`idcancion`),
-  CONSTRAINT `songsPlaylist_ibfk_1` FOREIGN KEY (`idplaylist`) REFERENCES `playList` (`id_playList`),
-  CONSTRAINT `songsPlaylist_ibfk_2` FOREIGN KEY (`interprete`) REFERENCES `Artista` (`id_artista`),
-  CONSTRAINT `songsPlaylist_ibfk_3` FOREIGN KEY (`idcancion`) REFERENCES `Cancion` (`id_cancion`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `songsPlaylist`
---
-
-LOCK TABLES `songsPlaylist` WRITE;
-/*!40000 ALTER TABLE `songsPlaylist` DISABLE KEYS */;
-INSERT INTO `songsPlaylist` VALUES (1,1,1,1),(2,2,2,2),(3,3,3,3),(4,4,4,4),(5,5,5,5),(6,6,6,6),(7,7,7,7),(8,8,8,8),(9,9,9,9),(10,10,10,10);
-/*!40000 ALTER TABLE `songsPlaylist` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Final view structure for view `IngresoUsuario`
---
-
-/*!50001 DROP TABLE IF EXISTS `IngresoUsuario`*/;
-/*!50001 DROP VIEW IF EXISTS `IngresoUsuario`*/;
+/*!50001 DROP TABLE IF EXISTS `Canciones_favoritas_De_Usuarios`*/;
+/*!50001 DROP VIEW IF EXISTS `Canciones_favoritas_De_Usuarios`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
 /*!50001 SET @saved_col_connection     = @@collation_connection */;
@@ -451,17 +460,17 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = utf8mb4_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`%` SQL SECURITY DEFINER */
-/*!50001 VIEW `IngresoUsuario` AS select `Usuario`.`username` AS `username`,max(`Ingresos`.`fecha_ingreso`) AS `ultima_fecha_ingreso`,`Ingresos`.`entrada` AS `entrada`,`Ingresos`.`salida` AS `salida`,count(`Ingresos`.`CodUser`) AS `cantidad_ingreso` from (`Usuario` join `Ingresos` on(`Usuario`.`id_user` = `Ingresos`.`CodUser`)) group by `Usuario`.`id_user` */;
+/*!50001 VIEW `Canciones_favoritas_De_Usuarios` AS select `Usuario`.`Id_Usuario` AS `Id_Usuario`,concat(`Usuario`.`Nombre_Usuario`,'',`Usuario`.`Apellido_Usuario`) AS `Usuario`,`Canciones`.`Nombre_Cancion` AS `Nombre_Cancion`,`Canciones`.`Duracion_Cancion` AS `Duracion_Cancion`,`Canciones`.`Numero_Visitas` AS `Numero_Visitas`,`Canciones`.`Descripcion_De_Cancion` AS `Descripcion_De_Cancion`,`Disco`.`Nombre_Disco` AS `Nombre_Disco`,`Disco`.`Numero_De_Canciones` AS `Numero_De_Canciones`,`Disco`.`Fecha_Lanzamiento` AS `Fecha_Lanzamiento`,`Artista`.`Nombre_Artista` AS `Nombre_Artista`,`Artista`.`Apellido_Artista` AS `Apellido_Artista`,`Artista`.`Nombre_Artististico` AS `Alias`,`Artista`.`fecha_Nacimiento_Artista` AS `Fecha_Nacimento`,`Artista`.`Nacionalidad` AS `Nacionalidad`,`Artista`.`Numero_Seguidores` AS `Numero_Seguidores` from ((((`Artista` join `Disco` on(`Artista`.`Id_Artista` = `Disco`.`Id_Artista`)) join `Canciones` on(`Disco`.`Id_Disco` = `Canciones`.`Id_Disco`)) join `Favoritas` on(`Favoritas`.`Id_Canciones` = `Canciones`.`Id_Canciones`)) join `Usuario` on(`Usuario`.`Id_Usuario` = `Favoritas`.`Id_Usuario`)) order by `Artista`.`Numero_Seguidores` */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
--- Final view structure for view `canciones_mas_escuchadas`
+-- Final view structure for view `ReporteIngresoDeUsuario`
 --
 
-/*!50001 DROP TABLE IF EXISTS `canciones_mas_escuchadas`*/;
-/*!50001 DROP VIEW IF EXISTS `canciones_mas_escuchadas`*/;
+/*!50001 DROP TABLE IF EXISTS `ReporteIngresoDeUsuario`*/;
+/*!50001 DROP VIEW IF EXISTS `ReporteIngresoDeUsuario`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
 /*!50001 SET @saved_col_connection     = @@collation_connection */;
@@ -470,17 +479,17 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = utf8mb4_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`%` SQL SECURITY DEFINER */
-/*!50001 VIEW `canciones_mas_escuchadas` AS select `Cancion`.`titulo_cancion` AS `titulo_cancion`,`Album`.`titulo_album` AS `titulo_album`,`Artista`.`nombre_artista` AS `nombre_artista`,`Cancion`.`reproducciones` AS `reproducciones`,`Usuario`.`username` AS `usuarios_diferentes` from (((`Cancion` join `Album`) join `Artista`) join `Usuario`) where `Cancion`.`id_cancion` = `Artista`.`id_artista` and `Album`.`id_album` = `Artista`.`id_artista` and `Cancion`.`reproducciones` > 800000000 order by `Cancion`.`reproducciones` desc */;
+/*!50001 VIEW `ReporteIngresoDeUsuario` AS select `Usuario`.`Nombre_Usuario` AS `Nombre_Usuario`,max(`Auditoria`.`fecha_ingreso`) AS `Ultima_fecha_Ingreso`,`Auditoria`.`Entrada` AS `Entrada`,`Auditoria`.`Salida` AS `Salida`,count(`Auditoria`.`Id_Usuario`) AS `Cantidad_Ingreso` from (`Usuario` join `Auditoria` on(`Usuario`.`Id_Usuario` = `Auditoria`.`Id_Usuario`)) group by `Usuario`.`Id_Usuario` */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
--- Final view structure for view `oyentesmensuales`
+-- Final view structure for view `Reporte_Canciones_Mas_Escuchadas`
 --
 
-/*!50001 DROP TABLE IF EXISTS `oyentesmensuales`*/;
-/*!50001 DROP VIEW IF EXISTS `oyentesmensuales`*/;
+/*!50001 DROP TABLE IF EXISTS `Reporte_Canciones_Mas_Escuchadas`*/;
+/*!50001 DROP VIEW IF EXISTS `Reporte_Canciones_Mas_Escuchadas`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
 /*!50001 SET @saved_col_connection     = @@collation_connection */;
@@ -489,7 +498,7 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = utf8mb4_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`%` SQL SECURITY DEFINER */
-/*!50001 VIEW `oyentesmensuales` AS select `Artista`.`nombre_artista` AS `nombre_artista`,`Artista`.`oyentes_mensuales` AS `oyentes_mensuales` from ((`Cancion` join `Album`) join `Artista`) where `Cancion`.`id_cancion` = `Artista`.`id_artista` and `Album`.`id_album` = `Artista`.`id_artista` order by `Artista`.`oyentes_mensuales` desc */;
+/*!50001 VIEW `Reporte_Canciones_Mas_Escuchadas` AS select `Canciones`.`Nombre_Cancion` AS `Nombre_Cancion`,`Disco`.`Nombre_Disco` AS `Nombre_Disco`,`Artista`.`Nombre_Artististico` AS `Nombre_Artististico`,`Canciones`.`Numero_Visitas` AS `Cant_visitas`,count(`Usuario`.`Nombre_Usuario`) AS `Usuarios_diferentes` from ((((`Artista` join `Disco` on(`Artista`.`Id_Artista` = `Disco`.`Id_Artista`)) join `Canciones` on(`Disco`.`Id_Disco` = `Canciones`.`Id_Disco`)) join `Favoritas` on(`Favoritas`.`Id_Canciones` = `Canciones`.`Id_Canciones`)) join `Usuario` on(`Usuario`.`Id_Usuario` = `Favoritas`.`Id_Usuario`)) group by `Usuario`.`Id_Usuario` */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -503,4 +512,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-06-02 22:02:49
+-- Dump completed on 2020-06-03 16:31:43
